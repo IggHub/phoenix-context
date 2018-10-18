@@ -1,7 +1,7 @@
-defmodule HelloWeb.SessionController do
-  use HelloWeb, :controller
+defmodule LearnContextWeb.SessionController do
+  use LearnContextWeb, :controller
 
-  alias Hello.Accounts
+  alias LearnContext.Accounts
 
   def new(conn, _) do
     render(conn, "new.html")
