@@ -17,6 +17,7 @@ defmodule LearnContextWeb.Router do
     pipe_through :browser # Use the default browser stack
 
     resources "/users", UserController
+    resources "/sessions", SessionController, only: [:new, :create, :delete], singleton: true
     get "/", PageController, :index
   end
 
