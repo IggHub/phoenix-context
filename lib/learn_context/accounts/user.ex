@@ -7,7 +7,7 @@ defmodule LearnContext.Accounts.User do
     field :name, :string
     field :username, :string
     has_one :credential, Credential
-
+  
     timestamps()
   end
 
