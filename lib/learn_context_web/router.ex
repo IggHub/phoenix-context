@@ -21,6 +21,12 @@ defmodule LearnContextWeb.Router do
     get "/", PageController, :index
   end
 
+  scope "/cms", LearnContextWeb.CMS, as: :cms do
+    pipe_through [:browser, :authenticate_user]
+
+    resources "/pages", PageController
+  end
+
   defp authenticate_user(conn, _) do
     case get_session(conn, :user_id) do
       nil ->
@@ -29,7 +35,7 @@ defmodule LearnContextWeb.Router do
         |> Phoenix.Controller.redirect(to: "/")
         |> halt()
       user_id ->
-        assign(conn, :current_user, Hello.Accounts.get_user!(user_id))
+        assign(conn, :current_user, LearnContext.Accounts.get_user!(user_id))
     end
   end
 end
